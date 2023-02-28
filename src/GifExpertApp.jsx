@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { AddCategory } from "./components/AddCategory";
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState([
-    "bob esponja",
-    "patricio",
-    "calamardo",
-  ]);
+  const [categories, setCategories] = useState(["bob esponja"]);
 
   const addNewCategory = (category) => {
+    if (categories.includes(category)) {
+      console.log("Categoria duplicada");
+      return;
+    }
     setCategories([category, ...categories]);
   };
 
