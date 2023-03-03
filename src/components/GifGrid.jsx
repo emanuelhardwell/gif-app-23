@@ -1,19 +1,9 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-import { getGifsFetch } from "../helpers/getGifsFetch";
+import { useFetchGifs } from "../hooks/useFetchGifs";
 import { GridItem } from "./GridItem";
 
 export const GifGrid = ({ category }) => {
-  const [images, setImages] = useState([]);
-
-  const getGifs = async () => {
-    const data = await getGifsFetch(category);
-    setImages(data);
-  };
-
-  useEffect(() => {
-    getGifs();
-  }, []);
+  const { images, isLoading } = useFetchGifs(category);
 
   return (
     <div>
