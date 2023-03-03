@@ -1,9 +1,8 @@
-import React from "react";
-
-export const GridItem = () => {
+export const GridItem = ({ title, url }) => {
   return (
-    <div>
-      <h1>GridItem</h1>
+    <div className="card">
+      <p>{title}</p>
+      <img src={url} alt={title} />
     </div>
   );
 };
