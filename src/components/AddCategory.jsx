@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("");
@@ -11,7 +12,7 @@ export const AddCategory = ({ onNewCategory }) => {
     e.preventDefault();
 
     if (inputValue.trim().length <= 2) {
-      console.log("Solo se aceptan palabras mayores a 2 valores");
+      console.log("Solo se aceptan palabras mayores a 2 caracteres");
       return;
     }
 
@@ -32,4 +33,8 @@ export const AddCategory = ({ onNewCategory }) => {
       </form>
     </>
   );
+};
+
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
 };

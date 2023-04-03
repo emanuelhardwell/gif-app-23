@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
+import { useState } from "react";
+import { AddCategory, GifGrid } from "./components";
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState([
-    "bob esponja",
-    "patricio",
-    "calamardo",
-  ]);
+  const [categories, setCategories] = useState(["bob esponja"]);
 
   const addNewCategory = (category) => {
+    if (categories.includes(category)) {
+      console.log("Categoria duplicada");
+      return;
+    }
     setCategories([category, ...categories]);
   };
 
@@ -16,6 +16,10 @@ export const GifExpertApp = () => {
     <div>
       <h1>GifExpertApp</h1>
       <AddCategory onNewCategory={(category) => addNewCategory(category)} />
+
+      {categories.map((category) => (
+        <GifGrid key={category} category={category} />
+      ))}
     </div>
   );
 };
